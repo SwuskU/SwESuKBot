@@ -21,7 +21,7 @@ Discord Interactions ermöglichen es SwESuKBot, Slash Commands über HTTP-Endpun
    - Gehen Sie zu "General Information"
    - Scrollen Sie zu **"Interactions Endpoint URL"**
    - Für **Entwicklung**: `https://your-ngrok-url.ngrok.io/interactions`
-   - Für **Produktion**: `https://swesukbot.com/interactions`
+   - Für **Produktion**: `https://swusku.github.io/SwESuKBot/interactions`
 
 5. **Public Key kopieren**:
    - Auf der "General Information" Seite
@@ -44,7 +44,7 @@ DISCORD_CLIENT_SECRET=your_discord_client_secret_here
 DISCORD_GUILD_ID=your_test_guild_id_here
 
 # Interactions Endpoint
-INTERACTIONS_ENDPOINT=https://swesukbot.com/interactions
+INTERACTIONS_ENDPOINT=https://swusku.github.io/SwESuKBot/interactions
 ```
 
 ---
@@ -173,7 +173,7 @@ https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=53
 ### **1. Interactions Endpoint testen:**
 ```bash
 # Discord sendet PING-Request zur Verifikation
-curl -X POST https://your-domain.com/interactions \
+curl -X POST https://swusku.github.io/SwESuKBot/interactions \
   -H "Content-Type: application/json" \
   -d '{"type": 1}'
 

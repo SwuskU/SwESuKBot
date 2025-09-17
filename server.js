@@ -16,12 +16,23 @@ const GITHUB_REDIRECT_URI = process.env.GITHUB_REDIRECT_URI || 'http://localhost
 // Discord OAuth Konfiguration
 const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const DISCORD_REDIRECT_URI = process.env.DISCORD_REDIRECT_URI || 'http://localhost:8080/auth/discord/callback';
+const baseUrl = process.env.BASE_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'https://swusku.github.io/SwESuKBot');
+const DISCORD_REDIRECT_URI = `${baseUrl}/auth/discord/callback`;
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
+
+// CORS Konfiguration
+app.use(cors({
+    origin: [
+        'http://localhost:8080',
+        'https://swusku.github.io',
+        'https://swesukbot.com'
+    ],
+    credentials: true
+}));
 
 // Session Konfiguration
 app.use(session({
