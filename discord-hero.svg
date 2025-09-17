@@ -1,0 +1,298 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="discordGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7289da;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#99aab5;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="messageGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7289da;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="phoneGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="70%" style="stop-color:#36393f;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#2f3136;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <linearGradient id="onlineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43b581;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3ba55c;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="phoneShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="4" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Patterns -->
+    <pattern id="messagePattern" x="0" y="0" width="200" height="30" patternUnits="userSpaceOnUse">
+      <rect width="200" height="30" fill="#36393f"/>
+      <rect x="10" y="5" width="180" height="20" rx="10" fill="#40444b"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="150" cy="150" r="140" fill="url(#discordGradient)" filter="url(#phoneShadow)" opacity="0.1"/>
+  
+  <!-- Main Container -->
+  <g transform="translate(150, 150)">
+    
+    <!-- Phone Device -->
+    <g transform="translate(0, 0)">
+      <!-- Phone Body -->
+      <rect x="-40" y="-80" width="80" height="160" rx="15" ry="15" fill="#2f3136" filter="url(#phoneShadow)"/>
+      <rect x="-35" y="-75" width="70" height="150" rx="12" ry="12" fill="#36393f"/>
+      
+      <!-- Screen -->
+      <rect x="-32" y="-70" width="64" height="140" rx="8" ry="8" fill="#000000"/>
+      <rect x="-30" y="-68" width="60" height="136" rx="6" ry="6" fill="url(#phoneGlow)"/>
+      
+      <!-- Discord Interface -->
+      <!-- Top Bar -->
+      <rect x="-30" y="-68" width="60" height="12" fill="#5865f2"/>
+      <text x="-25" y="-60" font-family="Arial, sans-serif" font-size="4" fill="#ffffff" font-weight="bold">Discord</text>
+      
+      <!-- Status Bar -->
+      <g transform="translate(20, -65)">
+        <rect x="0" y="0" width="8" height="2" fill="#ffffff" opacity="0.8"/>
+        <rect x="0" y="3" width="6" height="2" fill="#ffffff" opacity="0.6"/>
+        <rect x="0" y="6" width="4" height="2" fill="#ffffff" opacity="0.4"/>
+      </g>
+      
+      <!-- Server List -->
+      <g transform="translate(-28, -50)">
+        <rect x="0" y="0" width="8" height="110" fill="#2f3136"/>
+        
+        <!-- Server Icons -->
+        <circle cx="4" cy="6" r="3" fill="#5865f2"/>
+        <text x="2.5" y="8" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">D</text>
+        
+        <rect x="1" y="15" width="6" height="6" rx="1" fill="#7289da"/>
+        <text x="2.5" y="19" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">S</text>
+        
+        <circle cx="4" cy="28" r="3" fill="#43b581"/>
+        <text x="2.5" y="30" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">G</text>
+        
+        <rect x="1" y="37" width="6" height="6" rx="1" fill="#f04747"/>
+        <text x="2.5" y="41" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">B</text>
+        
+        <!-- Add Server Button -->
+        <circle cx="4" cy="55" r="3" fill="#43b581" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="2.5" y="57" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">+</text>
+      </g>
+      
+      <!-- Channel List -->
+      <g transform="translate(-18, -50)">
+        <rect x="0" y="0" width="20" height="110" fill="#2f3136"/>
+        
+        <!-- Server Name -->
+        <rect x="1" y="2" width="18" height="8" fill="#36393f"/>
+        <text x="2" y="7" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">SwESuKBot</text>
+        
+        <!-- Channels -->
+        <text x="2" y="18" font-family="Arial, sans-serif" font-size="2.5" fill="#8e9297">TEXT CHANNELS</text>
+        
+        <g opacity="0.8">
+          <text x="3" y="25" font-family="Arial, sans-serif" font-size="2.5" fill="#dcddde"># general</text>
+          <text x="3" y="30" font-family="Arial, sans-serif" font-size="2.5" fill="#dcddde"># github</text>
+          <text x="3" y="35" font-family="Arial, sans-serif" font-size="2.5" fill="#5865f2"># bot-logs</text>
+          <text x="3" y="40" font-family="Arial, sans-serif" font-size="2.5" fill="#dcddde"># dev-chat</text>
+        </g>
+        
+        <text x="2" y="50" font-family="Arial, sans-serif" font-size="2.5" fill="#8e9297">VOICE CHANNELS</text>
+        
+        <g opacity="0.8">
+          <text x="3" y="57" font-family="Arial, sans-serif" font-size="2.5" fill="#dcddde">🔊 General</text>
+          <text x="3" y="62" font-family="Arial, sans-serif" font-size="2.5" fill="#dcddde">🔊 Dev Room</text>
+        </g>
+        
+        <!-- User Area -->
+        <rect x="1" y="95" width="18" height="12" fill="#292b2f"/>
+        <circle cx="4" cy="101" r="2.5" fill="#43b581"/>
+        <text x="7" y="100" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">Developer</text>
+        <text x="7" y="103" font-family="Arial, sans-serif" font-size="1.5" fill="#b9bbbe">Online</text>
+        
+        <!-- Online Status -->
+        <circle cx="6" cy="103" r="1" fill="#43b581"/>
+      </g>
+      
+      <!-- Chat Area -->
+      <g transform="translate(5, -50)">
+        <rect x="0" y="0" width="25" height="110" fill="#36393f"/>
+        
+        <!-- Channel Header -->
+        <rect x="0" y="0" width="25" height="8" fill="#2f3136"/>
+        <text x="2" y="5" font-family="Arial, sans-serif" font-size="3" fill="#ffffff"># bot-logs</text>
+        
+        <!-- Messages -->
+        <g transform="translate(1, 12)">
+          <!-- Message 1 -->
+          <circle cx="2" cy="2" r="1.5" fill="#7289da"/>
+          <rect x="4" y="0" width="18" height="6" rx="1" fill="#40444b"/>
+          <text x="5" y="2" font-family="Arial, sans-serif" font-size="1.5" fill="#ffffff">SwESuKBot</text>
+          <text x="15" y="2" font-family="Arial, sans-serif" font-size="1" fill="#72767d">Today at 12:34</text>
+          <text x="5" y="4.5" font-family="Arial, sans-serif" font-size="1.8" fill="#dcddde">✅ Repository connected!</text>
+          
+          <!-- Message 2 -->
+          <circle cx="2" cy="10" r="1.5" fill="#43b581"/>
+          <rect x="4" y="8" width="18" height="6" rx="1" fill="#40444b"/>
+          <text x="5" y="10" font-family="Arial, sans-serif" font-size="1.5" fill="#ffffff">GitHub</text>
+          <text x="13" y="10" font-family="Arial, sans-serif" font-size="1" fill="#72767d">Today at 12:35</text>
+          <text x="5" y="12.5" font-family="Arial, sans-serif" font-size="1.8" fill="#dcddde">New commit pushed to main</text>
+          
+          <!-- Message 3 -->
+          <circle cx="2" cy="18" r="1.5" fill="#f04747"/>
+          <rect x="4" y="16" width="18" height="8" rx="1" fill="#40444b"/>
+          <text x="5" y="18" font-family="Arial, sans-serif" font-size="1.5" fill="#ffffff">Developer</text>
+          <text x="15" y="18" font-family="Arial, sans-serif" font-size="1" fill="#72767d">Today at 12:36</text>
+          <text x="5" y="20.5" font-family="Arial, sans-serif" font-size="1.8" fill="#dcddde">Great work! 🚀</text>
+          <text x="5" y="22.5" font-family="Arial, sans-serif" font-size="1.8" fill="#dcddde">Bot is working perfectly</text>
+          
+          <!-- Typing Indicator -->
+          <g transform="translate(0, 28)">
+            <circle cx="2" cy="2" r="1.5" fill="#99aab5"/>
+            <rect x="4" y="0" width="15" height="4" rx="1" fill="#40444b"/>
+            <text x="5" y="2.5" font-family="Arial, sans-serif" font-size="1.5" fill="#72767d">Someone is typing...</text>
+            
+            <!-- Animated dots -->
+            <g transform="translate(17, 1.5)">
+              <circle cx="0" cy="0" r="0.3" fill="#72767d">
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="1" cy="0" r="0.3" fill="#72767d">
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+              </circle>
+              <circle cx="2" cy="0" r="0.3" fill="#72767d">
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" begin="1s"/>
+              </circle>
+            </g>
+          </g>
+        </g>
+        
+        <!-- Message Input -->
+        <rect x="1" y="95" width="23" height="8" rx="4" fill="#40444b"/>
+        <text x="3" y="100" font-family="Arial, sans-serif" font-size="2" fill="#72767d">Message #bot-logs</text>
+        
+        <!-- Send Button -->
+        <circle cx="21" cy="99" r="2" fill="#5865f2"/>
+        <text x="19.5" y="101" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">➤</text>
+      </g>
+      
+      <!-- Home Button -->
+      <rect x="-15" y="75" width="30" height="3" rx="1.5" fill="#ffffff" opacity="0.3"/>
+    </g>
+    
+    <!-- Discord Logo -->
+    <g transform="translate(0, -110)">
+      <circle cx="0" cy="0" r="18" fill="#5865f2" filter="url(#phoneShadow)"/>
+      <!-- Discord Clyde -->
+      <path d="M-10,-6 Q-6,-12 0,-10 Q6,-12 10,-6 Q12,-3 10,8 Q6,12 0,10 Q-6,12 -10,8 Q-12,-3 -10,-6 Z" fill="#ffffff"/>
+      <ellipse cx="-4" cy="-1" rx="2" ry="3" fill="#5865f2"/>
+      <ellipse cx="4" cy="-1" rx="2" ry="3" fill="#5865f2"/>
+      <rect x="-6" y="4" width="12" height="2" rx="1" fill="#5865f2"/>
+    </g>
+    
+    <!-- Floating Notification Elements -->
+    <g opacity="0.7">
+      <!-- Notification 1 -->
+      <g transform="translate(-70, -40)">
+        <rect x="0" y="0" width="35" height="12" rx="6" fill="#5865f2" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="4" cy="6" r="2" fill="#ffffff"/>
+        <text x="8" y="4" font-family="Arial, sans-serif" font-size="2.5" fill="#ffffff">New PR merged!</text>
+        <text x="8" y="8" font-family="Arial, sans-serif" font-size="2" fill="#b9bbbe">SwESuKBot/main</text>
+        <animateTransform attributeName="transform" type="translate" 
+                          values="-70,-40; -60,-30; -70,-40" dur="4s" repeatCount="indefinite"/>
+      </g>
+      
+      <!-- Notification 2 -->
+      <g transform="translate(40, -50)">
+        <rect x="0" y="0" width="30" height="10" rx="5" fill="#43b581" opacity="0.9" filter="url(#glow)"/>
+        <text x="3" y="4" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">✅ Build passed</text>
+        <text x="3" y="7" font-family="Arial, sans-serif" font-size="1.5" fill="#ffffff">All tests green</text>
+        <animateTransform attributeName="transform" type="translate" 
+                          values="40,-50; 50,-40; 40,-50" dur="3s" repeatCount="indefinite"/>
+      </g>
+      
+      <!-- Notification 3 -->
+      <g transform="translate(-80, 40)">
+        <rect x="0" y="0" width="32" height="10" rx="5" fill="#faa61a" opacity="0.9" filter="url(#glow)"/>
+        <text x="3" y="4" fill="#ffffff" font-family="Arial, sans-serif" font-size="2">⚠️ Issue opened</text>
+        <text x="3" y="7" fill="#ffffff" font-family="Arial, sans-serif" font-size="1.5">#42 Bug report</text>
+        <animateTransform attributeName="transform" type="translate" 
+                          values="-80,40; -70,50; -80,40" dur="5s" repeatCount="indefinite"/>
+      </g>
+      
+      <!-- Voice Channel Indicator -->
+      <g transform="translate(60, 30)">
+        <circle cx="0" cy="0" r="12" fill="#43b581" opacity="0.8" filter="url(#glow)"/>
+        <path d="M-6,-3 L-3,0 L-6,3 Z" fill="#ffffff"/>
+        <rect x="-2" y="-4" width="8" height="8" rx="1" fill="none" stroke="#ffffff" stroke-width="1"/>
+        <text x="-8" y="8" font-family="Arial, sans-serif" font-size="2" fill="#43b581">3 in voice</text>
+        <animateTransform attributeName="transform" type="translate" 
+                          values="60,30; 70,20; 60,30" dur="6s" repeatCount="indefinite"/>
+      </g>
+    </g>
+    
+    <!-- Connection Lines -->
+    <g opacity="0.5">
+      <path d="M-50,-20 Q-30,0 -10,20" stroke="url(#messageGradient)" stroke-width="3" fill="none" stroke-dasharray="8,4">
+        <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M50,-20 Q30,0 10,20" stroke="url(#messageGradient)" stroke-width="3" fill="none" stroke-dasharray="8,4">
+        <animate attributeName="stroke-dashoffset" values="0;-12" dur="2s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Status Indicators -->
+    <g transform="translate(0, 90)">
+      <!-- Online Users -->
+      <circle cx="-20" cy="0" r="4" fill="#43b581" opacity="0.8">
+        <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <text x="-18" y="2" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">●</text>
+      
+      <!-- Bot Status -->
+      <circle cx="0" cy="0" r="4" fill="#5865f2" opacity="0.8">
+        <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" begin="1s"/>
+      </circle>
+      <text x="-2" y="2" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">🤖</text>
+      
+      <!-- Activity -->
+      <circle cx="20" cy="0" r="4" fill="#faa61a" opacity="0.8">
+        <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" begin="2s"/>
+      </circle>
+      <text x="18" y="2" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">⚡</text>
+    </g>
+    
+  </g>
+  
+  <!-- Outer Decorative Ring -->
+  <circle cx="150" cy="150" r="145" fill="none" stroke="url(#discordGradient)" 
+          stroke-width="3" stroke-dasharray="20,15" opacity="0.4">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 150 150; -360 150 150" dur="25s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Inner Ring -->
+  <circle cx="150" cy="150" r="130" fill="none" stroke="#43b581" 
+          stroke-width="1" stroke-dasharray="10,20" opacity="0.3">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="360 150 150; 0 150 150" dur="20s" repeatCount="indefinite"/>
+  </circle>
+  
+</svg>

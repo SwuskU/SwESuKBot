@@ -1,0 +1,288 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="collaborationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7289da;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="teamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43b581;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#faa61a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f04747;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="userGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#43b581;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#43b581;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#43b581;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="teamGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="100" cy="100" r="95" fill="url(#collaborationGradient)" opacity="0.1"/>
+  
+  <!-- Central Hub -->
+  <g transform="translate(100, 100)">
+    <!-- Hub Core -->
+    <circle cx="0" cy="0" r="20" fill="url(#userGlow)" opacity="0.6"/>
+    <circle cx="0" cy="0" r="15" fill="url(#collaborationGradient)" filter="url(#teamGlow)"/>
+    <circle cx="0" cy="0" r="10" fill="#ffffff"/>
+    
+    <!-- Team Icon -->
+    <g transform="scale(0.8)">
+      <circle cx="-6" cy="-3" r="3" fill="#5865f2"/>
+      <circle cx="6" cy="-3" r="3" fill="#00d4aa"/>
+      <circle cx="0" cy="5" r="3" fill="#7289da"/>
+      <path d="M-6,0 Q0,3 6,0" stroke="#5865f2" stroke-width="1" fill="none"/>
+      <path d="M-3,8 Q0,5 3,8" stroke="#7289da" stroke-width="1" fill="none"/>
+    </g>
+    
+    <!-- Rotating Connection Ring -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="url(#collaborationGradient)" 
+            stroke-width="2" stroke-dasharray="8,4" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0 0 0; 360 0 0" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Team Members -->
+  <g opacity="0.9">
+    <!-- Developer 1 -->
+    <g transform="translate(50, 50)">
+      <circle cx="0" cy="0" r="12" fill="#43b581" filter="url(#shadow)">
+        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+      <circle cx="0" cy="-2" r="2.5" fill="#43b581"/>
+      <path d="M-3,2 Q0,4 3,2" stroke="#43b581" stroke-width="1.5" fill="none"/>
+      
+      <!-- Status Badge -->
+      <circle cx="8" cy="-8" r="3" fill="#28a745"/>
+      <text x="8" y="-6" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">✓</text>
+      
+      <!-- Name Tag -->
+      <rect x="-15" y="15" width="30" height="8" rx="4" fill="#2f3136" opacity="0.9"/>
+      <text x="0" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Alex</text>
+      <text x="0" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#b9bbbe">Frontend</text>
+    </g>
+    
+    <!-- Developer 2 -->
+    <g transform="translate(150, 50)">
+      <circle cx="0" cy="0" r="12" fill="#faa61a" filter="url(#shadow)">
+        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite" begin="1s"/>
+      </circle>
+      <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+      <circle cx="0" cy="-2" r="2.5" fill="#faa61a"/>
+      <path d="M-3,2 Q0,4 3,2" stroke="#faa61a" stroke-width="1.5" fill="none"/>
+      
+      <!-- Status Badge -->
+      <circle cx="8" cy="-8" r="3" fill="#faa61a"/>
+      <text x="8" y="-6" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">⚡</text>
+      
+      <!-- Name Tag -->
+      <rect x="-15" y="15" width="30" height="8" rx="4" fill="#2f3136" opacity="0.9"/>
+      <text x="0" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Sarah</text>
+      <text x="0" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#b9bbbe">Backend</text>
+    </g>
+    
+    <!-- Developer 3 -->
+    <g transform="translate(50, 150)">
+      <circle cx="0" cy="0" r="12" fill="#f04747" filter="url(#shadow)">
+        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite" begin="2s"/>
+      </circle>
+      <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+      <circle cx="0" cy="-2" r="2.5" fill="#f04747"/>
+      <path d="M-3,2 Q0,4 3,2" stroke="#f04747" stroke-width="1.5" fill="none"/>
+      
+      <!-- Status Badge -->
+      <circle cx="8" cy="-8" r="3" fill="#7289da"/>
+      <text x="8" y="-6" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">💬</text>
+      
+      <!-- Name Tag -->
+      <rect x="-15" y="15" width="30" height="8" rx="4" fill="#2f3136" opacity="0.9"/>
+      <text x="0" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Mike</text>
+      <text x="0" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#b9bbbe">DevOps</text>
+    </g>
+    
+    <!-- Developer 4 -->
+    <g transform="translate(150, 150)">
+      <circle cx="0" cy="0" r="12" fill="#6f42c1" filter="url(#shadow)">
+        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+      </circle>
+      <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+      <circle cx="0" cy="-2" r="2.5" fill="#6f42c1"/>
+      <path d="M-3,2 Q0,4 3,2" stroke="#6f42c1" stroke-width="1.5" fill="none"/>
+      
+      <!-- Status Badge -->
+      <circle cx="8" cy="-8" r="3" fill="#d73a49"/>
+      <text x="8" y="-6" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#ffffff">🐛</text>
+      
+      <!-- Name Tag -->
+      <rect x="-15" y="15" width="30" height="8" rx="4" fill="#2f3136" opacity="0.9"/>
+      <text x="0" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Emma</text>
+      <text x="0" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="2" fill="#b9bbbe">QA</text>
+    </g>
+  </g>
+  
+  <!-- Connection Lines -->
+  <g opacity="0.6">
+    <!-- Hub to Members -->
+    <path d="M75,75 Q87.5,87.5 100,100" stroke="url(#collaborationGradient)" stroke-width="3" 
+          fill="none" stroke-dasharray="6,3">
+      <animate attributeName="stroke-dashoffset" values="0;9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M125,75 Q112.5,87.5 100,100" stroke="url(#collaborationGradient)" stroke-width="3" 
+          fill="none" stroke-dasharray="6,3">
+      <animate attributeName="stroke-dashoffset" values="0;-9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M75,125 Q87.5,112.5 100,100" stroke="url(#collaborationGradient)" stroke-width="3" 
+          fill="none" stroke-dasharray="6,3">
+      <animate attributeName="stroke-dashoffset" values="0;9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M125,125 Q112.5,112.5 100,100" stroke="url(#collaborationGradient)" stroke-width="3" 
+          fill="none" stroke-dasharray="6,3">
+      <animate attributeName="stroke-dashoffset" values="0;-9" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Inter-member connections -->
+    <path d="M62,62 Q106,62 138,62" stroke="url(#teamGradient)" stroke-width="2" 
+          fill="none" stroke-dasharray="4,4" opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;8" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M62,138 Q106,138 138,138" stroke="url(#teamGradient)" stroke-width="2" 
+          fill="none" stroke-dasharray="4,4" opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Collaboration Activities -->
+  <g opacity="0.8">
+    <!-- Code Review -->
+    <g transform="translate(30, 100)">
+      <rect x="0" y="0" width="35" height="12" rx="6" fill="#6f42c1" filter="url(#teamGlow)">
+        <animate attributeName="transform" values="translate(-5,0) scale(0.9); translate(0,0) scale(1); translate(-5,0) scale(0.9)" 
+                 dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="6" cy="6" r="2" fill="#ffffff"/>
+      <text x="4.5" y="7.5" font-family="Arial, sans-serif" font-size="2" fill="#6f42c1">👁</text>
+      <text x="10" y="8" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Code Review</text>
+    </g>
+    
+    <!-- Pull Request -->
+    <g transform="translate(135, 100)">
+      <rect x="0" y="0" width="35" height="12" rx="6" fill="#28a745" filter="url(#teamGlow)">
+        <animate attributeName="transform" values="translate(5,0) scale(0.9); translate(0,0) scale(1); translate(5,0) scale(0.9)" 
+                 dur="4s" repeatCount="indefinite" begin="2s"/>
+      </rect>
+      <circle cx="6" cy="6" r="2" fill="#ffffff"/>
+      <text x="4.5" y="7.5" font-family="Arial, sans-serif" font-size="2" fill="#28a745">↗</text>
+      <text x="10" y="8" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">Pull Request</text>
+    </g>
+    
+    <!-- Discussion -->
+    <g transform="translate(75, 30)">
+      <rect x="0" y="0" width="30" height="10" rx="5" fill="#5865f2" filter="url(#teamGlow)">
+        <animate attributeName="transform" values="translate(0,-2) scale(0.95); translate(0,0) scale(1); translate(0,-2) scale(0.95)" 
+                 dur="4s" repeatCount="indefinite" begin="1s"/>
+      </rect>
+      <text x="15" y="7" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">💬 Discussion</text>
+    </g>
+    
+    <!-- Deployment -->
+    <g transform="translate(75, 170)">
+      <rect x="0" y="0" width="30" height="10" rx="5" fill="#faa61a" filter="url(#teamGlow)">
+        <animate attributeName="transform" values="translate(0,2) scale(0.95); translate(0,0) scale(1); translate(0,2) scale(0.95)" 
+                 dur="4s" repeatCount="indefinite" begin="3s"/>
+      </rect>
+      <text x="15" y="7" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">🚀 Deploy</text>
+    </g>
+  </g>
+  
+  <!-- Workflow Indicators -->
+  <g opacity="0.7">
+    <!-- Workflow 1: Issue to PR -->
+    <g transform="translate(20, 70)">
+      <circle cx="0" cy="0" r="6" fill="#d73a49">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="20,70; 30,80; 40,90; 50,100" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <text x="-2" y="2" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">!</text>
+    </g>
+    
+    <!-- Workflow 2: PR to Merge -->
+    <g transform="translate(180, 70)">
+      <circle cx="0" cy="0" r="6" fill="#28a745">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="180,70; 170,80; 160,90; 150,100" dur="6s" repeatCount="indefinite" begin="2s"/>
+      </circle>
+      <text x="-2" y="2" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">✓</text>
+    </g>
+    
+    <!-- Workflow 3: Deploy to Monitor -->
+    <g transform="translate(20, 130)">
+      <circle cx="0" cy="0" r="6" fill="#0366d6">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="20,130; 30,120; 40,110; 50,100" dur="6s" repeatCount="indefinite" begin="4s"/>
+      </circle>
+      <text x="-2" y="2" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">🔧</text>
+    </g>
+  </g>
+  
+  <!-- Team Statistics -->
+  <g transform="translate(100, 20)">
+    <rect x="-40" y="0" width="80" height="15" rx="7.5" fill="#2f3136" opacity="0.9" filter="url(#shadow)"/>
+    
+    <!-- Active Members -->
+    <circle cx="-30" cy="7.5" r="2" fill="#43b581">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="-25" y="6" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">4 Active</text>
+    
+    <!-- PRs Today -->
+    <text x="5" y="6" font-family="Arial, sans-serif" font-size="3" fill="#28a745">7 PRs</text>
+    
+    <!-- Issues Closed -->
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="3" fill="#f04747">3 Issues</text>
+  </g>
+  
+  <!-- Outer Rings -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#collaborationGradient)" 
+          stroke-width="2" stroke-dasharray="10,5" opacity="0.4">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 100 100; 360 100 100" dur="20s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#43b581" 
+          stroke-width="1" stroke-dasharray="5,10" opacity="0.3">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="360 100 100; 0 100 100" dur="15s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Pulse Effect -->
+  <g transform="translate(100, 100)">
+    <circle cx="0" cy="0" r="30" fill="none" stroke="url(#collaborationGradient)" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="30;50;70" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.3;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#43b581" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="30;50;70" dur="4s" repeatCount="indefinite" begin="2s"/>
+      <animate attributeName="opacity" values="0.8;0.3;0" dur="4s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+  </g>
+  
+</svg>

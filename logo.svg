@@ -1,0 +1,178 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7289da;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#24292e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#586069;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#5865f2;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#5865f2;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#5865f2;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Patterns -->
+    <pattern id="circuitPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none"/>
+      <circle cx="10" cy="10" r="1" fill="#5865f2" opacity="0.3"/>
+      <line x1="0" y1="10" x2="20" y2="10" stroke="#5865f2" stroke-width="0.5" opacity="0.2"/>
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#5865f2" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background Circle with Glow -->
+  <circle cx="100" cy="100" r="95" fill="url(#glowGradient)" opacity="0.5"/>
+  <circle cx="100" cy="100" r="85" fill="url(#primaryGradient)" filter="url(#shadow)"/>
+  
+  <!-- Circuit Pattern Background -->
+  <circle cx="100" cy="100" r="80" fill="url(#circuitPattern)" opacity="0.1"/>
+  
+  <!-- Main Bot Head -->
+  <g transform="translate(100, 100)">
+    <!-- Bot Head Base -->
+    <rect x="-35" y="-40" width="70" height="60" rx="15" ry="15" 
+          fill="#ffffff" stroke="url(#secondaryGradient)" stroke-width="2" filter="url(#shadow)"/>
+    
+    <!-- Bot Eyes -->
+    <circle cx="-15" cy="-20" r="8" fill="url(#primaryGradient)" filter="url(#glow)">
+      <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="15" cy="-20" r="8" fill="url(#primaryGradient)" filter="url(#glow)">
+      <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    
+    <!-- Eye Pupils -->
+    <circle cx="-15" cy="-20" r="3" fill="#ffffff"/>
+    <circle cx="15" cy="-20" r="3" fill="#ffffff"/>
+    
+    <!-- Bot Mouth -->
+    <rect x="-20" y="-5" width="40" height="8" rx="4" ry="4" fill="url(#secondaryGradient)"/>
+    <rect x="-18" y="-3" width="8" height="4" rx="2" ry="2" fill="#00d4aa"/>
+    <rect x="-5" y="-3" width="8" height="4" rx="2" ry="2" fill="#00d4aa"/>
+    <rect x="8" y="-3" width="8" height="4" rx="2" ry="2" fill="#00d4aa"/>
+    
+    <!-- Bot Antennas -->
+    <line x1="-25" y1="-40" x2="-30" y2="-55" stroke="url(#secondaryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="25" y1="-40" x2="30" y2="-55" stroke="url(#secondaryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="-30" cy="-55" r="4" fill="url(#primaryGradient)" filter="url(#glow)">
+      <animate attributeName="fill" values="url(#primaryGradient);#00d4aa;url(#primaryGradient)" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="-55" r="4" fill="url(#primaryGradient)" filter="url(#glow)">
+      <animate attributeName="fill" values="url(#primaryGradient);#00d4aa;url(#primaryGradient)" dur="1.5s" repeatCount="indefinite" begin="0.75s"/>
+    </circle>
+  </g>
+  
+  <!-- GitHub Integration Symbol -->
+  <g transform="translate(60, 140)">
+    <!-- GitHub Octocat simplified -->
+    <circle cx="0" cy="0" r="20" fill="#24292e" filter="url(#shadow)"/>
+    <path d="M-10,-5 Q0,-15 10,-5 Q15,0 10,10 Q5,15 0,10 Q-5,15 -10,10 Q-15,0 -10,-5 Z" 
+          fill="#ffffff"/>
+    <circle cx="-5" cy="-2" r="2" fill="#24292e"/>
+    <circle cx="5" cy="-2" r="2" fill="#24292e"/>
+    <path d="M-3,3 Q0,6 3,3" stroke="#24292e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Connection Line -->
+    <line x1="20" y1="0" x2="60" y2="-40" stroke="url(#primaryGradient)" stroke-width="3" 
+          stroke-dasharray="5,5" opacity="0.7">
+      <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Discord Integration Symbol -->
+  <g transform="translate(140, 140)">
+    <!-- Discord Logo simplified -->
+    <circle cx="0" cy="0" r="20" fill="#5865f2" filter="url(#shadow)"/>
+    <path d="M-12,-8 Q-8,-12 0,-10 Q8,-12 12,-8 Q15,-5 12,8 Q8,12 0,10 Q-8,12 -12,8 Q-15,-5 -12,-8 Z" 
+          fill="#ffffff"/>
+    <circle cx="-5" cy="-2" r="2.5" fill="#5865f2"/>
+    <circle cx="5" cy="-2" r="2.5" fill="#5865f2"/>
+    <rect x="-8" y="3" width="16" height="3" rx="1.5" ry="1.5" fill="#5865f2"/>
+    
+    <!-- Connection Line -->
+    <line x1="-20" y1="0" x2="-60" y2="-40" stroke="url(#primaryGradient)" stroke-width="3" 
+          stroke-dasharray="5,5" opacity="0.7">
+      <animate attributeName="stroke-dashoffset" values="0;-10" dur="1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Data Flow Animation -->
+  <g opacity="0.6">
+    <!-- Data Packets -->
+    <circle cx="80" cy="120" r="3" fill="#00d4aa">
+      <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
+        <path d="M0,0 Q20,-20 40,-40 Q60,-60 80,-80"/>
+      </animateMotion>
+    </circle>
+    <circle cx="120" cy="120" r="3" fill="#00d4aa">
+      <animateMotion dur="3s" repeatCount="indefinite" rotate="auto" begin="1s">
+        <path d="M0,0 Q-20,-20 -40,-40 Q-60,-60 -80,-80"/>
+      </animateMotion>
+    </circle>
+    <circle cx="100" cy="130" r="3" fill="#7289da">
+      <animateMotion dur="3s" repeatCount="indefinite" rotate="auto" begin="2s">
+        <path d="M0,0 Q0,-30 0,-60"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- Outer Ring with Rotation -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#primaryGradient)" 
+          stroke-width="2" stroke-dasharray="10,5" opacity="0.5">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" 
+                      values="0 100 100;360 100 100" dur="20s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Inner Ring with Counter Rotation -->
+  <circle cx="100" cy="100" r="75" fill="none" stroke="#00d4aa" 
+          stroke-width="1" stroke-dasharray="5,10" opacity="0.3">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" 
+                      values="360 100 100;0 100 100" dur="15s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Corner Decorative Elements -->
+  <g opacity="0.4">
+    <!-- Top Left -->
+    <path d="M20,20 L30,20 L30,30" stroke="url(#primaryGradient)" stroke-width="2" fill="none"/>
+    <circle cx="25" cy="25" r="2" fill="url(#primaryGradient)"/>
+    
+    <!-- Top Right -->
+    <path d="M180,20 L170,20 L170,30" stroke="url(#primaryGradient)" stroke-width="2" fill="none"/>
+    <circle cx="175" cy="25" r="2" fill="url(#primaryGradient)"/>
+    
+    <!-- Bottom Left -->
+    <path d="M20,180 L30,180 L30,170" stroke="url(#primaryGradient)" stroke-width="2" fill="none"/>
+    <circle cx="25" cy="175" r="2" fill="url(#primaryGradient)"/>
+    
+    <!-- Bottom Right -->
+    <path d="M180,180 L170,180 L170,170" stroke="url(#primaryGradient)" stroke-width="2" fill="none"/>
+    <circle cx="175" cy="175" r="2" fill="url(#primaryGradient)"/>
+  </g>
+  
+  <!-- Pulsing Background Effect -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#primaryGradient)" 
+          stroke-width="1" opacity="0.2">
+    <animate attributeName="r" values="95;100;95" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/>
+  </circle>
+</svg>

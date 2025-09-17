@@ -1,0 +1,348 @@
+<svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="workflowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#24292e;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#7289da;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="stepGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#28a745;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffd33d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f04747;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#5865f2;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#5865f2;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#5865f2;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="workflowGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Arrow Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="url(#workflowGradient)" />
+    </marker>
+  </defs>
+  
+  <!-- Background Pattern -->
+  <defs>
+    <pattern id="workflowGrid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect width="50" height="50" fill="none"/>
+      <circle cx="25" cy="25" r="1" fill="#5865f2" opacity="0.2"/>
+      <line x1="0" y1="25" x2="50" y2="25" stroke="#5865f2" stroke-width="0.5" opacity="0.1"/>
+      <line x1="25" y1="0" x2="25" y2="50" stroke="#5865f2" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="400" fill="url(#workflowGrid)" opacity="0.3"/>
+  
+  <!-- Step 1: Developer Creates Issue -->
+  <g transform="translate(80, 80)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- Developer Icon -->
+    <circle cx="0" cy="-10" r="8" fill="#43b581"/>
+    <circle cx="0" cy="-12" r="3" fill="#ffffff"/>
+    <path d="M-4,-6 Q0,-4 4,-6" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+    
+    <!-- Issue Icon -->
+    <circle cx="0" cy="8" r="6" fill="#d73a49"/>
+    <text x="0" y="11" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#ffffff">!</text>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">1. Create Issue</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">Developer reports bug</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#d73a49" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Step 2: GitHub Webhook Triggers -->
+  <g transform="translate(250, 80)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- GitHub Icon -->
+    <circle cx="0" cy="-10" r="8" fill="#24292e"/>
+    <path d="M-4,-12 C-4,-15 -2,-17 0,-17 C2,-17 4,-15 4,-12 C4,-9 2,-7 0,-7 C-2,-7 -4,-9 -4,-12 Z" fill="#ffffff"/>
+    <circle cx="-2" cy="-11" r="1" fill="#24292e"/>
+    <circle cx="2" cy="-11" r="1" fill="#24292e"/>
+    
+    <!-- Webhook Icon -->
+    <rect x="-6" y="2" width="12" height="8" rx="2" fill="#ffd33d"/>
+    <path d="M-3,4 L3,8 M3,4 L-3,8" stroke="#24292e" stroke-width="1"/>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">2. Webhook</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">GitHub sends event</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#ffd33d" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+  
+  <!-- Step 3: Bot Processes Event -->
+  <g transform="translate(420, 80)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- Bot Icon -->
+    <rect x="-8" y="-15" width="16" height="12" rx="3" fill="#00d4aa"/>
+    <circle cx="-4" cy="-10" r="2" fill="#ffffff"/>
+    <circle cx="4" cy="-10" r="2" fill="#ffffff"/>
+    <rect x="-6" y="-6" width="12" height="2" fill="#ffffff"/>
+    
+    <!-- Processing Icon -->
+    <g transform="translate(0, 8)">
+      <circle cx="0" cy="0" r="6" fill="#5865f2">
+        <animateTransform attributeName="transform" type="rotate" 
+                          values="0 0 0; 360 0 0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <rect x="-2" y="-4" width="4" height="8" fill="#ffffff"/>
+      <rect x="-4" y="-2" width="8" height="4" fill="#ffffff"/>
+    </g>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">3. Process</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">Bot analyzes event</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#00d4aa" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite" begin="2s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+  </g>
+  
+  <!-- Step 4: Discord Notification -->
+  <g transform="translate(420, 200)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- Discord Icon -->
+    <path d="M-10,-16 Q-6,-22 0,-20 Q6,-22 10,-16 Q12,-13 10,-2 Q6,2 0,0 Q-6,2 -10,-2 Q-12,-13 -10,-16 Z" fill="#5865f2"/>
+    <ellipse cx="-4" cy="-11" rx="2" ry="3" fill="#ffffff"/>
+    <ellipse cx="4" cy="-11" rx="2" ry="3" fill="#ffffff"/>
+    <rect x="-6" y="-6" width="12" height="2" rx="1" fill="#ffffff"/>
+    
+    <!-- Notification Bell -->
+    <g transform="translate(0, 8)">
+      <path d="M-4,0 Q-5,-3 -3,-5 Q0,-6 3,-5 Q5,-3 4,0 L4,2 Q4,4 2,4 L-2,4 Q-4,4 -4,2 Z" fill="#ffd33d"/>
+      <circle cx="0" cy="3" r="1" fill="#ffffff">
+        <animateTransform attributeName="transform" type="rotate" 
+                          values="0 0 3; 10 0 3; -10 0 3; 0 0 3" dur="1s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">4. Notify</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">Send to Discord</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#5865f2" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite" begin="3s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite" begin="3s"/>
+    </circle>
+  </g>
+  
+  <!-- Step 5: Team Collaboration -->
+  <g transform="translate(250, 200)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- Team Icons -->
+    <circle cx="-8" cy="-10" r="4" fill="#43b581"/>
+    <circle cx="0" cy="-10" r="4" fill="#faa61a"/>
+    <circle cx="8" cy="-10" r="4" fill="#f04747"/>
+    
+    <!-- Collaboration Icon -->
+    <g transform="translate(0, 8)">
+      <path d="M-6,0 Q0,-3 6,0 Q8,2 6,4 Q0,7 -6,4 Q-8,2 -6,0 Z" fill="#7289da"/>
+      <circle cx="-3" cy="2" r="1" fill="#ffffff"/>
+      <circle cx="0" cy="2" r="1" fill="#ffffff"/>
+      <circle cx="3" cy="2" r="1" fill="#ffffff"/>
+    </g>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">5. Collaborate</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">Team discusses</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#7289da" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite" begin="4s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite" begin="4s"/>
+    </circle>
+  </g>
+  
+  <!-- Step 6: Resolution -->
+  <g transform="translate(80, 200)">
+    <!-- Step Container -->
+    <rect x="-40" y="-30" width="80" height="60" rx="15" fill="#24292e" filter="url(#shadow)"/>
+    <rect x="-35" y="-25" width="70" height="50" rx="12" fill="#36393f"/>
+    
+    <!-- Resolution Icon -->
+    <circle cx="0" cy="-10" r="8" fill="#28a745"/>
+    <path d="M-4,-12 L-2,-10 L4,-16" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    
+    <!-- Merge Icon -->
+    <g transform="translate(0, 8)">
+      <path d="M-6,0 Q0,3 6,0" stroke="#28a745" stroke-width="2" fill="none"/>
+      <circle cx="-6" cy="0" r="2" fill="#28a745"/>
+      <circle cx="6" cy="0" r="2" fill="#28a745"/>
+      <circle cx="0" cy="3" r="2" fill="#28a745"/>
+    </g>
+    
+    <!-- Step Label -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">6. Resolve</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="#b9bbbe">Issue closed</text>
+    
+    <!-- Animation -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#28a745" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="35;45;55" dur="3s" repeatCount="indefinite" begin="5s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite" begin="5s"/>
+    </circle>
+  </g>
+  
+  <!-- Connection Arrows -->
+  <g opacity="0.8">
+    <!-- 1 to 2 -->
+    <path d="M120,80 Q185,60 210,80" stroke="url(#workflowGradient)" stroke-width="4" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- 2 to 3 -->
+    <path d="M290,80 Q355,60 380,80" stroke="url(#workflowGradient)" stroke-width="4" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+    
+    <!-- 3 to 4 -->
+    <path d="M420,120 Q440,160 420,160" stroke="url(#workflowGradient)" stroke-width="4" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </path>
+    
+    <!-- 4 to 5 -->
+    <path d="M380,200 Q315,220 290,200" stroke="url(#workflowGradient)" stroke-width="4" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    </path>
+    
+    <!-- 5 to 6 -->
+    <path d="M210,200 Q145,220 120,200" stroke="url(#workflowGradient)" stroke-width="4" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite" begin="2s"/>
+    </path>
+    
+    <!-- 6 back to 1 (cycle) -->
+    <path d="M80,160 Q60,120 80,120" stroke="url(#workflowGradient)" stroke-width="2" 
+          fill="none" marker-end="url(#arrowhead)" stroke-dasharray="4,8" opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+    </path>
+  </g>
+  
+  <!-- Data Flow Indicators -->
+  <g opacity="0.6">
+    <!-- Data Packet 1 -->
+    <circle cx="0" cy="0" r="4" fill="#d73a49">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+        <path d="M120,80 Q185,60 210,80 Q355,60 380,80 Q440,160 420,160 Q315,220 290,200 Q145,220 120,200 Q60,120 80,120"/>
+      </animateMotion>
+    </circle>
+    
+    <!-- Data Packet 2 -->
+    <circle cx="0" cy="0" r="4" fill="#28a745">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" begin="2s">
+        <path d="M120,80 Q185,60 210,80 Q355,60 380,80 Q440,160 420,160 Q315,220 290,200 Q145,220 120,200 Q60,120 80,120"/>
+      </animateMotion>
+    </circle>
+    
+    <!-- Data Packet 3 -->
+    <circle cx="0" cy="0" r="4" fill="#5865f2">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" begin="4s">
+        <path d="M120,80 Q185,60 210,80 Q355,60 380,80 Q440,160 420,160 Q315,220 290,200 Q145,220 120,200 Q60,120 80,120"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- Central Hub -->
+  <g transform="translate(250, 140)">
+    <circle cx="0" cy="0" r="15" fill="url(#nodeGlow)" opacity="0.8"/>
+    <circle cx="0" cy="0" r="10" fill="url(#workflowGradient)" filter="url(#workflowGlow)"/>
+    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+    
+    <!-- SwESuKBot Logo -->
+    <rect x="-3" y="-4" width="6" height="5" rx="1" fill="#00d4aa"/>
+    <circle cx="-1" cy="-2" r="0.8" fill="#ffffff"/>
+    <circle cx="1" cy="-2" r="0.8" fill="#ffffff"/>
+    <rect x="-2" y="0" width="4" height="0.8" fill="#ffffff"/>
+    
+    <!-- Rotating Ring -->
+    <circle cx="0" cy="0" r="18" fill="none" stroke="url(#workflowGradient)" 
+            stroke-width="2" stroke-dasharray="6,3" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0 0 0; 360 0 0" dur="10s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Performance Metrics -->
+  <g transform="translate(250, 320)">
+    <rect x="-80" y="0" width="160" height="40" rx="20" fill="#2f3136" opacity="0.9" filter="url(#shadow)"/>
+    
+    <!-- Response Time -->
+    <g transform="translate(-60, 20)">
+      <circle cx="0" cy="0" r="3" fill="#28a745"/>
+      <text x="8" y="-3" font-family="Arial, sans-serif" font-size="4" fill="#ffffff">Response Time</text>
+      <text x="8" y="3" font-family="Arial, sans-serif" font-size="6" fill="#28a745">< 2s</text>
+    </g>
+    
+    <!-- Success Rate -->
+    <g transform="translate(0, 20)">
+      <circle cx="0" cy="0" r="3" fill="#ffd33d"/>
+      <text x="8" y="-3" font-family="Arial, sans-serif" font-size="4" fill="#ffffff">Success Rate</text>
+      <text x="8" y="3" font-family="Arial, sans-serif" font-size="6" fill="#ffd33d">99.9%</text>
+    </g>
+    
+    <!-- Events/Day -->
+    <g transform="translate(60, 20)">
+      <circle cx="0" cy="0" r="3" fill="#5865f2"/>
+      <text x="8" y="-3" font-family="Arial, sans-serif" font-size="4" fill="#ffffff">Events/Day</text>
+      <text x="8" y="3" font-family="Arial, sans-serif" font-size="6" fill="#5865f2">1.2k</text>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <g transform="translate(250, 30)">
+    <text x="0" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" 
+          font-weight="bold" fill="url(#workflowGradient)">SwESuKBot Workflow</text>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" 
+          fill="#b9bbbe">Seamless GitHub-Discord Integration</text>
+  </g>
+  
+</svg>

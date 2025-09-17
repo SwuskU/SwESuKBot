@@ -1,0 +1,263 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#24292e;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#5865f2;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#7289da;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5865f2;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="dataFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0" />
+    </linearGradient>
+    
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#5865f2;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#5865f2;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#5865f2;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="connectionGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="pulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Patterns -->
+    <pattern id="circuitBoard" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <circle cx="20" cy="20" r="2" fill="#5865f2" opacity="0.3"/>
+      <line x1="0" y1="20" x2="40" y2="20" stroke="#5865f2" stroke-width="1" opacity="0.2"/>
+      <line x1="20" y1="0" x2="20" y2="40" stroke="#5865f2" stroke-width="1" opacity="0.2"/>
+      <circle cx="10" cy="10" r="1" fill="#00d4aa" opacity="0.4"/>
+      <circle cx="30" cy="30" r="1" fill="#00d4aa" opacity="0.4"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background Pattern -->
+  <rect width="400" height="200" fill="url(#circuitBoard)" opacity="0.1"/>
+  
+  <!-- Main Connection Line -->
+  <g>
+    <!-- Base Connection -->
+    <path d="M50,100 Q200,50 350,100" stroke="url(#connectionGradient)" stroke-width="6" 
+          fill="none" filter="url(#connectionGlow)" opacity="0.8"/>
+    
+    <!-- Animated Data Flow -->
+    <path d="M50,100 Q200,50 350,100" stroke="url(#dataFlowGradient)" stroke-width="8" 
+          fill="none" stroke-dasharray="30,20">
+      <animate attributeName="stroke-dashoffset" values="0;50" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Secondary Connection Lines -->
+    <path d="M50,100 Q200,150 350,100" stroke="url(#connectionGradient)" stroke-width="4" 
+          fill="none" opacity="0.5" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" values="0;15" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M50,100 L350,100" stroke="url(#connectionGradient)" stroke-width="2" 
+          fill="none" opacity="0.3" stroke-dasharray="5,10">
+      <animate attributeName="stroke-dashoffset" values="0;-15" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- GitHub Node (Left) -->
+  <g transform="translate(50, 100)">
+    <!-- Node Base -->
+    <circle cx="0" cy="0" r="25" fill="url(#nodeGlow)" opacity="0.6"/>
+    <circle cx="0" cy="0" r="20" fill="#24292e" filter="url(#connectionGlow)"/>
+    <circle cx="0" cy="0" r="15" fill="#586069"/>
+    
+    <!-- GitHub Icon -->
+    <path d="M-8,-4 C-8,-10 -4,-14 0,-14 C4,-14 8,-10 8,-4 C8,2 4,6 0,6 C-4,6 -8,2 -8,-4 Z" fill="#ffffff"/>
+    <circle cx="-3" cy="-2" r="1.5" fill="#24292e"/>
+    <circle cx="3" cy="-2" r="1.5" fill="#24292e"/>
+    <path d="M-2,1 Q0,3 2,1" stroke="#24292e" stroke-width="1" fill="none"/>
+    
+    <!-- Pulse Animation -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#24292e" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="20;35;50" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Data Indicators -->
+    <g opacity="0.7">
+      <rect x="-12" y="-25" width="8" height="4" rx="2" fill="#28a745">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <text x="-11" y="-22" font-family="monospace" font-size="2" fill="#ffffff">PR</text>
+      
+      <rect x="4" y="-25" width="8" height="4" rx="2" fill="#6f42c1">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+      </rect>
+      <text x="5" y="-22" font-family="monospace" font-size="2" fill="#ffffff">CI</text>
+      
+      <rect x="-4" y="21" width="8" height="4" rx="2" fill="#d73a49">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin="1s"/>
+      </rect>
+      <text x="-3" y="24" font-family="monospace" font-size="2" fill="#ffffff">!</text>
+    </g>
+  </g>
+  
+  <!-- Discord Node (Right) -->
+  <g transform="translate(350, 100)">
+    <!-- Node Base -->
+    <circle cx="0" cy="0" r="25" fill="url(#nodeGlow)" opacity="0.6"/>
+    <circle cx="0" cy="0" r="20" fill="#5865f2" filter="url(#connectionGlow)"/>
+    <circle cx="0" cy="0" r="15" fill="#7289da"/>
+    
+    <!-- Discord Icon -->
+    <path d="M-10,-6 Q-6,-12 0,-10 Q6,-12 10,-6 Q12,-3 10,8 Q6,12 0,10 Q-6,12 -10,8 Q-12,-3 -10,-6 Z" fill="#ffffff"/>
+    <ellipse cx="-4" cy="-1" rx="2" ry="3" fill="#5865f2"/>
+    <ellipse cx="4" cy="-1" rx="2" ry="3" fill="#5865f2"/>
+    <rect x="-6" y="4" width="12" height="2" rx="1" fill="#5865f2"/>
+    
+    <!-- Pulse Animation -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#5865f2" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="20;35;50" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+      <animate attributeName="opacity" values="0.8;0.3;0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    
+    <!-- Notification Indicators -->
+    <g opacity="0.7">
+      <circle cx="-15" cy="-20" r="4" fill="#43b581">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="-17" y="-18" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">✓</text>
+      
+      <circle cx="15" cy="-20" r="4" fill="#faa61a">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+      </circle>
+      <text x="13" y="-18" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">@</text>
+      
+      <circle cx="0" cy="25" r="4" fill="#f04747">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin="1.3s"/>
+      </circle>
+      <text x="-2" y="27" font-family="Arial, sans-serif" font-size="3" fill="#ffffff">!</text>
+    </g>
+  </g>
+  
+  <!-- Central Hub -->
+  <g transform="translate(200, 100)">
+    <!-- Hub Core -->
+    <circle cx="0" cy="0" r="15" fill="url(#nodeGlow)" opacity="0.8"/>
+    <circle cx="0" cy="0" r="12" fill="#00d4aa" filter="url(#pulseGlow)">
+      <animate attributeName="r" values="12;15;12" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+    
+    <!-- Bot Icon -->
+    <rect x="-4" y="-5" width="8" height="7" rx="2" fill="#00d4aa"/>
+    <circle cx="-2" cy="-2" r="1" fill="#ffffff"/>
+    <circle cx="2" cy="-2" r="1" fill="#ffffff"/>
+    <rect x="-3" y="1" width="6" height="1" fill="#ffffff"/>
+    
+    <!-- Rotating Ring -->
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#00d4aa" stroke-width="2" 
+            stroke-dasharray="10,5" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0 0 0; 360 0 0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Data Processing Indicators -->
+    <g opacity="0.8">
+      <rect x="-20" y="-2" width="6" height="4" rx="2" fill="#5865f2">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="-20,0; -8,0; -20,0" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      
+      <rect x="14" y="-2" width="6" height="4" rx="2" fill="#24292e">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="14,0; 2,0; 14,0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+      </rect>
+    </g>
+  </g>
+  
+  <!-- Data Packets -->
+  <g opacity="0.8">
+    <!-- Packet 1: GitHub to Hub -->
+    <circle cx="0" cy="0" r="3" fill="#28a745">
+      <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+        <path d="M50,100 Q125,75 200,100"/>
+      </animateMotion>
+    </circle>
+    
+    <!-- Packet 2: Hub to Discord -->
+    <circle cx="0" cy="0" r="3" fill="#5865f2">
+      <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="2s">
+        <path d="M200,100 Q275,75 350,100"/>
+      </animateMotion>
+    </circle>
+    
+    <!-- Packet 3: Discord to Hub -->
+    <circle cx="0" cy="0" r="3" fill="#7289da">
+      <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="1s">
+        <path d="M350,100 Q275,125 200,100"/>
+      </animateMotion>
+    </circle>
+    
+    <!-- Packet 4: Hub to GitHub -->
+    <circle cx="0" cy="0" r="3" fill="#00d4aa">
+      <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="3s">
+        <path d="M200,100 Q125,125 50,100"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- Status Indicators -->
+  <g transform="translate(200, 50)">
+    <!-- Connection Status -->
+    <rect x="-30" y="0" width="60" height="8" rx="4" fill="#43b581" opacity="0.9"/>
+    <text x="-25" y="5" font-family="Arial, sans-serif" font-size="4" fill="#ffffff">Connected</text>
+    
+    <!-- Activity Dots -->
+    <circle cx="-35" cy="4" r="2" fill="#43b581">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="35" cy="4" r="2" fill="#43b581">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+  </g>
+  
+  <!-- Data Flow Statistics -->
+  <g transform="translate(200, 160)">
+    <rect x="-40" y="0" width="80" height="20" rx="10" fill="#2f3136" opacity="0.8"/>
+    
+    <!-- Upload -->
+    <text x="-35" y="8" font-family="monospace" font-size="3" fill="#00d4aa">↑ 1.2MB/s</text>
+    
+    <!-- Download -->
+    <text x="-35" y="15" font-family="monospace" font-size="3" fill="#5865f2">↓ 0.8MB/s</text>
+    
+    <!-- Packets -->
+    <text x="5" y="8" font-family="monospace" font-size="3" fill="#faa61a">📦 247</text>
+    
+    <!-- Latency -->
+    <text x="5" y="15" font-family="monospace" font-size="3" fill="#43b581">⚡ 12ms</text>
+  </g>
+  
+  <!-- Network Grid Background -->
+  <g opacity="0.1">
+    <defs>
+      <pattern id="networkGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#5865f2" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="400" height="200" fill="url(#networkGrid)"/>
+  </g>
+  
+</svg>
