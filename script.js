@@ -203,33 +203,15 @@ function handleLogin(e) {
 function handleGitHubLogin() {
     showNotification('GitHub OAuth wird geöffnet...', 'info');
     
-    // Simulate GitHub OAuth flow
-    setTimeout(() => {
-        authenticateUser({
-            name: 'GitHub User',
-            email: 'user@github.com',
-            provider: 'github',
-            avatar: 'https://github.com/identicons/sample.png'
-        });
-        closeLoginModal();
-        showNotification('Mit GitHub angemeldet!', 'success');
-    }, 2000);
+    // Echte GitHub OAuth Weiterleitung
+    window.location.href = '/auth/github';
 }
 
 function handleDiscordLogin() {
     showNotification('Discord OAuth wird geöffnet...', 'info');
     
-    // Simulate Discord OAuth flow
-    setTimeout(() => {
-        authenticateUser({
-            name: 'Discord User',
-            email: 'user@discord.com',
-            provider: 'discord',
-            avatar: 'https://cdn.discordapp.com/embed/avatars/0.png'
-        });
-        closeLoginModal();
-        showNotification('Mit Discord angemeldet!', 'success');
-    }, 2000);
+    // Echte Discord OAuth Weiterleitung
+    window.location.href = '/auth/discord';
 }
 
 function handleSignup(e) {
@@ -307,38 +289,120 @@ function showUserMenu() {
     }, 100);
 }
 
-function logout() {
-    isAuthenticated = false;
-    currentUser = null;
-    
-    // Clear localStorage
-    localStorage.removeItem('swesukbot_user');
-    localStorage.removeItem('swesukbot_auth');
-    
-    // Update UI
-    updateAuthUI();
-    
-    // Remove user menu
-    const userMenu = document.querySelector('.user-menu');
-    if (userMenu) userMenu.remove();
-    
-    showNotification('Erfolgreich abgemeldet', 'success');
-}
-
-function checkAuthStatus() {
-    const storedAuth = localStorage.getItem('swesukbot_auth');
-    const storedUser = localStorage.getItem('swesukbot_user');
-    
-    if (storedAuth === 'true' && storedUser) {
-        try {
-            currentUser = JSON.parse(storedUser);
-            isAuthenticated = true;
-            updateAuthUI();
-        } catch (e) {
-            console.error('Error parsing stored user data:', e);
+async function logout() {
+    try {
+        const response = await fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            isAuthenticated = false;
+            currentUser = null;
+            
+            // Clear localStorage
             localStorage.removeItem('swesukbot_user');
             localStorage.removeItem('swesukbot_auth');
+            
+            // Update UI
+            updateAuthUI();
+            
+            // Remove user menu
+            const userMenu = document.querySelector('.user-menu');
+            if (userMenu) userMenu.remove();
+            
+            showNotification('Erfolgreich abgemeldet', 'success');
+        } else {
+            throw new Error('Logout failed');
         }
+    } catch (error) {
+        console.error('Logout error:', error);
+        showNotification('Fehler beim Abmelden', 'error');
+    }
+}
+
+async function checkAuthStatus() {
+    // Prüfe URL Parameter für OAuth Rückmeldungen
+    const urlParams = new URLSearchParams(window.location.search);
+    const authStatus = urlParams.get('auth');
+    
+    if (authStatus === 'success') {
+        showNotification('Erfolgreich angemeldet!', 'success');
+        // URL Parameter entfernen
+        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (authStatus === 'error') {
+        showNotification('Anmeldung fehlgeschlagen', 'error');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    
+    // Prüfe aktuellen Authentifizierungsstatus vom Server
+    try {
+        const response = await fetch('/api/user');
+        if (response.ok) {
+            const data = await response.json();
+            currentUser = data.user;
+            isAuthenticated = true;
+            updateAuthUI();
+            
+            // Lade zusätzliche Daten basierend auf Provider
+            if (currentUser.provider === 'github') {
+                loadGitHubData();
+            } else if (currentUser.provider === 'discord') {
+                loadDiscordData();
+            }
+        } else {
+            // Nicht authentifiziert
+            isAuthenticated = false;
+            currentUser = null;
+            updateAuthUI();
+        }
+    } catch (error) {
+        console.error('Error checking auth status:', error);
+        // Fallback zu localStorage
+        const storedAuth = localStorage.getItem('swesukbot_auth');
+        const storedUser = localStorage.getItem('swesukbot_user');
+        
+        if (storedAuth === 'true' && storedUser) {
+            try {
+                currentUser = JSON.parse(storedUser);
+                isAuthenticated = true;
+                updateAuthUI();
+            } catch (e) {
+                console.error('Error parsing stored user data:', e);
+                localStorage.removeItem('swesukbot_user');
+                localStorage.removeItem('swesukbot_auth');
+            }
+        }
+    }
+}
+
+// Lade GitHub-spezifische Daten
+async function loadGitHubData() {
+    try {
+        const response = await fetch('/api/github/repos');
+        if (response.ok) {
+            const repos = await response.json();
+            console.log('GitHub Repositories:', repos);
+            // Hier können Sie die Repositories in der UI anzeigen
+        }
+    } catch (error) {
+        console.error('Error loading GitHub data:', error);
+    }
+}
+
+// Lade Discord-spezifische Daten
+async function loadDiscordData() {
+    try {
+        const response = await fetch('/api/discord/guilds');
+        if (response.ok) {
+            const guilds = await response.json();
+            console.log('Discord Guilds:', guilds);
+            // Hier können Sie die Guilds in der UI anzeigen
+        }
+    } catch (error) {
+        console.error('Error loading Discord data:', error);
     }
 }
 

@@ -459,8 +459,16 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 SwESuKBot. Alle Rechte vorbehalten.</p>
+                <p id="copyright">&copy; 2024 SwESuKBot. Alle Rechte vorbehalten.</p>
             </div>
+            <script>
+                (() => {
+                    const copyrightElement = document.getElementById("copyright");
+                    if (copyrightElement) {
+                        copyrightElement.innerHTML = `&copy; 2024-${new Date().getFullYear()} <a href="https://swusku.github.io/SwESuKBot/" target="_blank" rel="noopener noreferrer">SwESuKBot</a> - All Rights Reserved.`;
+                    }
+                })();
+            </script>
         </div>
     </footer>
 
